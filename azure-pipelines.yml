@@ -10,7 +10,7 @@ steps:
 
 - checkout: self
 
-- script: |
+- bash: |
     echo "###################"
     echo "# test equal-files-in-src-and-dst-must-success"
     echo "###################"
