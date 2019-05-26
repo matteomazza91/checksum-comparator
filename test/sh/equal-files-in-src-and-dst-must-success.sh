@@ -16,7 +16,8 @@ echo "yet another test" > dst/subdir/file1
 echo "yet another line" >> src/subdir/file1
 echo "yet another line" >> dst/subdir/file1
 
-if [ ./checksum-comparator --debug src dst ]; then
+./checksum-comparator.sh --debug src dst
+if [ $? = 0 ]; then
   exit 0
 fi
 
