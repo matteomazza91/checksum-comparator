@@ -1,2 +1,22 @@
 # checksum-comparator
 perform the comparison of 2 directories creating a checksum of each file for future incremental check
+
+
+## Usage
+
+```
+USAGE: ./checksum-comparator.sh [options] <src_dir> <dst_dir>
+
+options:
+  -s | --silent: don't print anything
+  --error: [default] print only errors found. ex: missing files, different files
+  --info: print information about the computed files
+  --debug: print debug information
+  --trace: print all the possible information
+
+./checksum-comparator.sh compares src and dst directories performing checksums of all the files
+It can be interrupted at any time and restarted later
+exit value:
+  0: the 2 directories contains the same files
+  not 0: the 2 directories have at least one difference or an error occurred
+```
