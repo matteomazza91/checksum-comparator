@@ -17,7 +17,7 @@ echo "yet another line" >> src/subdir/file1
 echo "yet another line" >> dst/subdir/file1
 
 chmod +x ./checksum-comparator.sh
-./checksum-comparator.sh --debug src dst
+bash ./checksum-comparator.sh --debug src dst
 if [ $? = 0 ]; then
   exit 0
 fi
