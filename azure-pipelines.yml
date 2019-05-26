@@ -15,8 +15,8 @@ steps:
     echo "# test equal-files-in-src-and-dst-must-success"
     echo "###################"
     echo ""
-    chmod +x ./sh/equal-files-in-src-and-dst-must-success.sh
-    ./sh/equal-files-in-src-and-dst-must-success.sh
+    chmod +x ./test/sh/equal-files-in-src-and-dst-must-success.sh
+    ./test/sh/equal-files-in-src-and-dst-must-success.sh
   displayName: 'Run testing'
-  workingDirectory: 'test'
+
 
