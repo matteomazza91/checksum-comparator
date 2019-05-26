@@ -11,6 +11,8 @@ steps:
 - checkout: self
 
 - bash: |
+    echo ""
+    echo ""
     echo "###################"
     echo "# test equal-files-in-src-and-dst-must-success"
     echo "###################"
@@ -18,6 +20,8 @@ steps:
     chmod +x ./test/sh/equal-files-in-src-and-dst-must-success.sh
     ./test/sh/equal-files-in-src-and-dst-must-success.sh
 
+    echo ""
+    echo ""
     echo "###################"
     echo "# test different-files-in-src-and-dst-must-fail"
     echo "###################"
@@ -25,11 +29,49 @@ steps:
     chmod +x ./test/sh/different-files-in-src-and-dst-must-fail.sh
     ./test/sh/different-files-in-src-and-dst-must-fail.sh
 
+    echo ""
+    echo ""
     echo "###################"
     echo "# test missing-file-in-dst-dir-must-fail"
     echo "###################"
     echo ""
     chmod +x ./test/sh/missing-file-in-dst-dir-must-fail.sh
     ./test/sh/missing-file-in-dst-dir-must-fail.sh
+
+    echo ""
+    echo ""
+    echo "###################"
+    echo "# test missing-file-in-src-dir-must-not-fail"
+    echo "###################"
+    echo ""
+    chmod +x ./test/sh/missing-file-in-src-dir-must-not-fail.sh
+    ./test/sh/missing-file-in-src-dir-must-not-fail.sh
+
+    echo ""
+    echo ""
+    echo "###################"
+    echo "# test silent-option-must-not-provide-any-output"
+    echo "###################"
+    echo ""
+    chmod +x ./test/sh/silent-option-must-not-provide-any-output.sh
+    ./test/sh/silent-option-must-not-provide-any-output.sh
+
+    echo ""
+    echo ""
+    echo "###################"
+    echo "# test update-file-in-src-or-dst-dir-after-checksum-computed-must-fail"
+    echo "###################"
+    echo ""
+    chmod +x ./test/sh/update-file-in-src-or-dst-dir-after-checksum-computed-must-fail.sh
+    ./test/sh/update-file-in-src-or-dst-dir-after-checksum-computed-must-fail.sh
+
+    echo ""
+    echo ""
+    echo "###################"
+    echo "# test update-files-in-src-and-dst-must-success"
+    echo "###################"
+    echo ""
+    chmod +x ./test/sh/update-files-in-src-and-dst-must-success.sh
+    ./test/sh/update-files-in-src-and-dst-must-success.sh
 
   displayName: 'Run testing'
