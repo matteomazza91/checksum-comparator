@@ -19,12 +19,14 @@ echo "yet another test" > dst/subdir/file1
 echo "yet another line" >> src/subdir/file1
 echo "yet another line" >> dst/subdir/file1
 
-echo "yet another unwanted line" >> dst/subdir/file1
+echo "just one unwanted line" >> dst/subdir/file1
+echo "a missing file" > src/missingFile
 
 chmod +x ./checksum-comparator.sh
 bash ./checksum-comparator.sh --debug -s src dst > test-silent.output
 if [ -s test-silent.output ]; then
-  exit 0
+  cat test-silent.output
+  exit 1
 fi
 
-exit 1
+exit 0

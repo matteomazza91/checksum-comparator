@@ -24,12 +24,11 @@ bash ./checksum-comparator.sh --debug src dst
 
 
 echo "one update" > dst/subdir/file1
-echo "IT MUST FAIL"
-exit 1
+
 # it must detect that an update is occurred and must recompute the checksum
 bash ./checksum-comparator.sh --debug src dst
 if [ $? = 0 ]; then
   exit 1
 fi
-exit 1
+
 exit 0
