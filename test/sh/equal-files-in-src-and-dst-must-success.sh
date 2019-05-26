@@ -1,3 +1,6 @@
+rm -r src
+rm -r dst
+
 mkdir src
 mkdir dst
 
