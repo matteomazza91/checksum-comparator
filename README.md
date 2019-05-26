@@ -2,6 +2,8 @@
 perform the comparison of 2 directories creating a checksum of each file and store them for future incremental checks.   
 If a file had changed since the last execution, the change will be detected and the checksum will be computed again.
 
+#### build status
+[![Build Status](https://dev.azure.com/matteomazza/matteomazza/_apis/build/status/matteomazza91.checksum-comparator?branchName=master)](https://dev.azure.com/matteomazza/matteomazza/_build/latest?definitionId=1&branchName=master)
 
 ## Usage
 
