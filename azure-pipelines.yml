@@ -1,0 +1,22 @@
+# Testing Pipeline
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- checkout: self
+
+- bash: |
+    echo "###################"
+    echo "# test equal-files-in-src-and-dst-must-success"
+    echo "###################"
+    echo ""
+    chmod +x ./test/sh/equal-files-in-src-and-dst-must-success.sh
+    ./test/sh/equal-files-in-src-and-dst-must-success.sh
+  displayName: 'Run testing'
+
+
