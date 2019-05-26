@@ -24,10 +24,13 @@ bash ./checksum-comparator.sh --debug src dst
 
 
 echo "one update" > dst/subdir/file1
+echo ""
+ls -lah # shows date of files
 
 # it must detect that an update is occurred and must recompute the checksum
 bash ./checksum-comparator.sh --debug src dst
 if [ $? = 0 ]; then
+  ls -lah
   exit 1
 fi
 
