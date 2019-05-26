@@ -1,5 +1,6 @@
 # checksum-comparator
-perform the comparison of 2 directories creating a checksum of each file for future incremental check
+perform the comparison of 2 directories creating a checksum of each file and store them for future incremental checks.   
+If a file had changed since the last execution, the change will be detected and the checksum will be computed again.
 
 
 ## Usage
