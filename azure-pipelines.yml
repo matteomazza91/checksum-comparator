@@ -19,6 +19,9 @@ steps:
     echo ""
     chmod +x ./test/sh/equal-files-in-src-and-dst-must-success.sh
     ./test/sh/equal-files-in-src-and-dst-must-success.sh
+    if [ $? != 0 ]; then
+      exit 1
+    fi
 
     echo ""
     echo ""
@@ -28,6 +31,9 @@ steps:
     echo ""
     chmod +x ./test/sh/different-files-in-src-and-dst-must-fail.sh
     ./test/sh/different-files-in-src-and-dst-must-fail.sh
+    if [ $? != 0 ]; then
+      exit 1
+    fi
 
     echo ""
     echo ""
@@ -37,6 +43,9 @@ steps:
     echo ""
     chmod +x ./test/sh/missing-file-in-dst-dir-must-fail.sh
     ./test/sh/missing-file-in-dst-dir-must-fail.sh
+    if [ $? != 0 ]; then
+      exit 1
+    fi
 
     echo ""
     echo ""
@@ -46,6 +55,9 @@ steps:
     echo ""
     chmod +x ./test/sh/missing-file-in-src-dir-must-not-fail.sh
     ./test/sh/missing-file-in-src-dir-must-not-fail.sh
+    if [ $? != 0 ]; then
+      exit 1
+    fi
 
     echo ""
     echo ""
@@ -55,6 +67,9 @@ steps:
     echo ""
     chmod +x ./test/sh/silent-option-must-not-provide-any-output.sh
     ./test/sh/silent-option-must-not-provide-any-output.sh
+    if [ $? != 0 ]; then
+      exit 1
+    fi
 
     echo ""
     echo ""
@@ -64,6 +79,9 @@ steps:
     echo ""
     chmod +x ./test/sh/update-file-in-src-or-dst-dir-after-checksum-computed-must-fail.sh
     ./test/sh/update-file-in-src-or-dst-dir-after-checksum-computed-must-fail.sh
+    if [ $? != 0 ]; then
+      exit 1
+    fi
 
     echo ""
     echo ""
@@ -73,5 +91,8 @@ steps:
     echo ""
     chmod +x ./test/sh/update-files-in-src-and-dst-must-success.sh
     ./test/sh/update-files-in-src-and-dst-must-success.sh
+    if [ $? != 0 ]; then
+      exit 1
+    fi
 
   displayName: 'Run testing'
