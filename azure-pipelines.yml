@@ -17,6 +17,19 @@ steps:
     echo ""
     chmod +x ./test/sh/equal-files-in-src-and-dst-must-success.sh
     ./test/sh/equal-files-in-src-and-dst-must-success.sh
+
+    echo "###################"
+    echo "# test different-files-in-src-and-dst-must-fail"
+    echo "###################"
+    echo ""
+    chmod +x ./test/sh/different-files-in-src-and-dst-must-fail.sh
+    ./test/sh/different-files-in-src-and-dst-must-fail.sh
+
+    echo "###################"
+    echo "# test missing-file-in-dst-dir-must-fail"
+    echo "###################"
+    echo ""
+    chmod +x ./test/sh/missing-file-in-dst-dir-must-fail.sh
+    ./test/sh/missing-file-in-dst-dir-must-fail.sh
+
   displayName: 'Run testing'
-
-
