@@ -36,8 +36,8 @@ need_to_compute_checksum()
     return 0
   fi
 
-  # if the FILE_CHECKSUM does not exists
-  if [ ! -f "$FILE_CHECKSUM" ]; then
+  # if the FILE_CHECKSUM does not exists or it is empty
+  if [ ! -f "$FILE_CHECKSUM" ] || [ ! -s "$FILE_CHECKSUM" ]; then
     return 0
   else
     LAST_MOD_CHECKSUM=$(stat -c "%y" "$FILE_CHECKSUM")
