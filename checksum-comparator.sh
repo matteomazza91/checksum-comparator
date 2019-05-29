@@ -6,6 +6,7 @@ usage()
     echo ""
     echo "options:"
     echo "  -s | --silent: don't print anything"
+    echo "  -r | --refresh: ignore already computed local checksums"
     echo "  --error: [default] print only errors found. ex: missing files, different files"
     echo "  --info: print information about the computed files"
     echo "  --debug: print debug information"
@@ -30,6 +31,10 @@ need_to_compute_checksum()
   FILE_CHECKSUM=$2
   
   trace "  + call need_to_compute_checksum $FILE $FILE_CHECKSUM"
+
+  if [ "$REFRESH" == "0" ]; then
+    return 0
+  fi
 
   # if the FILE_CHECKSUM does not exists
   if [ ! -f "$FILE_CHECKSUM" ]; then
@@ -102,6 +107,7 @@ trace()
 
 DEBUG_LEVEL=2
 SILENT=1
+REFRESH=1
 #####################
 #### INPUT CHECK ####
 #####################
@@ -115,6 +121,10 @@ case $key in
     DEBUG_LEVEL="$2"
     shift # past argument
     shift # past value
+    ;;
+    -r|--refresh)
+    REFRESH=0
+    shift # past argument
     ;;
     -s|--silent)
     SILENT=0

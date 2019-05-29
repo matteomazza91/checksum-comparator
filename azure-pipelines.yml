@@ -20,88 +20,20 @@ steps:
 - checkout: self
 
 - bash: |
-    echo ""
-    echo ""
-    echo "###################"
-    echo "# test equal-files-in-src-and-dst-must-success"
-    echo "###################"
-    echo ""
-    chmod +x ./test/sh/equal-files-in-src-and-dst-must-success.sh
-    ./test/sh/equal-files-in-src-and-dst-must-success.sh
-    if [ $? != 0 ]; then
-      exit 1
-    fi
 
-    echo ""
-    echo ""
-    echo "###################"
-    echo "# test different-files-in-src-and-dst-must-fail"
-    echo "###################"
-    echo ""
-    chmod +x ./test/sh/different-files-in-src-and-dst-must-fail.sh
-    ./test/sh/different-files-in-src-and-dst-must-fail.sh
-    if [ $? != 0 ]; then
-      exit 1
-    fi
-
-    echo ""
-    echo ""
-    echo "###################"
-    echo "# test missing-file-in-dst-dir-must-fail"
-    echo "###################"
-    echo ""
-    chmod +x ./test/sh/missing-file-in-dst-dir-must-fail.sh
-    ./test/sh/missing-file-in-dst-dir-must-fail.sh
-    if [ $? != 0 ]; then
-      exit 1
-    fi
-
-    echo ""
-    echo ""
-    echo "###################"
-    echo "# test missing-file-in-src-dir-must-not-fail"
-    echo "###################"
-    echo ""
-    chmod +x ./test/sh/missing-file-in-src-dir-must-not-fail.sh
-    ./test/sh/missing-file-in-src-dir-must-not-fail.sh
-    if [ $? != 0 ]; then
-      exit 1
-    fi
-
-    echo ""
-    echo ""
-    echo "###################"
-    echo "# test silent-option-must-not-provide-any-output"
-    echo "###################"
-    echo ""
-    chmod +x ./test/sh/silent-option-must-not-provide-any-output.sh
-    ./test/sh/silent-option-must-not-provide-any-output.sh
-    if [ $? != 0 ]; then
-      exit 1
-    fi
-
-    echo ""
-    echo ""
-    echo "###################"
-    echo "# test update-file-in-src-or-dst-dir-after-checksum-computed-must-fail"
-    echo "###################"
-    echo ""
-    chmod +x ./test/sh/update-file-in-src-or-dst-dir-after-checksum-computed-must-fail.sh
-    ./test/sh/update-file-in-src-or-dst-dir-after-checksum-computed-must-fail.sh
-    if [ $? != 0 ]; then
-      exit 1
-    fi
-
-    echo ""
-    echo ""
-    echo "###################"
-    echo "# test update-files-in-src-and-dst-must-success"
-    echo "###################"
-    echo ""
-    chmod +x ./test/sh/update-files-in-src-and-dst-must-success.sh
-    ./test/sh/update-files-in-src-and-dst-must-success.sh
-    if [ $? != 0 ]; then
-      exit 1
-    fi
+    for TEST_FILE in test/sh/*
+    do
+      echo ""
+      echo ""
+      echo "###################"
+      echo "# test $TEST_FILE"
+      echo "###################"
+      echo ""
+      chmod +x "$TEST_FILE"
+      "./$TEST_FILE"
+      if [ $? != 0 ]; then
+        exit 1
+      fi
+    done
 
   displayName: 'Run testing'
