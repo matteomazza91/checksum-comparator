@@ -12,6 +12,7 @@ USAGE: ./checksum-comparator.sh [options] <src_dir> <dst_dir>
 
 options:
   -s | --silent: don't print anything
+  -r | --refresh: ignore already computed local checksums
   --error: [default] print only errors found. ex: missing files, different files
   --info: print information about the computed files
   --debug: print debug information
