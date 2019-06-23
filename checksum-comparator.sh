@@ -1,29 +1,7 @@
 #!/bin/sh
 
-usage()
-{
-    echo "USAGE: $0 [options] <src_dir> <dst_dir>"
-    echo ""
-    echo "options:"
-    echo "  -s | --silent: don't print anything"
-    echo "  -r | --refresh: ignore already computed local checksums"
-    echo "  --error: [default] print only errors found. ex: missing files, different files"
-    echo "  --info: print information about the computed files"
-    echo "  --debug: print debug information"
-    echo "  --trace: print all the possible information"
-    echo ""
-    echo "$0 compares src and dst directories performing checksums of all the files"
-    echo "It can be interrupted at any time and restarted later"
-    echo "exit value:"
-    echo "  0: the 2 directories contains the same files"
-    echo "  not 0: the 2 directories have at least one difference or an error occurred"
-    exit 1
-}
-  
-checksum()
-{
-    md5sum
-}
+source config.sh
+source log.sh
 
 need_to_compute_checksum()
 {
@@ -62,52 +40,6 @@ need_to_compute_checksum()
   return 1
 }
 
-fatal()
-{
-  if [ "$DEBUG_LEVEL" -ge "1" ] && [ "$SILENT" != "0" ]; then
-    echo "FATAL: "$1
-    exit 1
-  fi
-}
-
-error()
-{
-  if [ "$DEBUG_LEVEL" -ge "2" ] && [ "$SILENT" != "0" ]; then
-    echo "ERROR: "$1
-  fi
-}
-
-warning()
-{
-  if [ "$DEBUG_LEVEL" -ge "3" ] && [ "$SILENT" != "0" ]; then
-    echo "WARN : "$1
-  fi
-}
-
-info()
-{
-  if [ "$DEBUG_LEVEL" -ge "4" ] && [ "$SILENT" != "0" ]; then
-    echo "INFO : "$1
-  fi
-}
-
-debug()
-{
-  if [ "$DEBUG_LEVEL" -ge "5" ] && [ "$SILENT" != "0" ]; then
-    echo "DEBUG: "$1
-  fi
-}
-
-trace()
-{
-  if [ "$DEBUG_LEVEL" -ge "6" ] && [ "$SILENT" != "0" ]; then
-    echo "TRACE: "$1
-  fi
-}
-
-DEBUG_LEVEL=2
-SILENT=1
-REFRESH=1
 #####################
 #### INPUT CHECK ####
 #####################
@@ -179,9 +111,6 @@ if [ ! -d "$DST_DIR" ]; then
   usage
 fi
 
-CHECKSUM=md5sum
-
-
 #####################
 ####   COMPARE   ####
 #####################
@@ -189,10 +118,6 @@ CHECKSUM=md5sum
 # list all files of src_dir and dst_dir
 SRC_FILES=$(find $SRC_DIR/* | awk -F $SRC_DIR ' { print $NF } ' )
 #DST_FILES=$(find $DST_DIR/*)
-
-MISSING_FILES=0
-DIFFERENT_FILES=0
-ERRORS=0
 
 # foreach SRC_FILE, compute the checksum of the file in src_dir and dst_dir
 while read -r RELATIVE_PATH; do
